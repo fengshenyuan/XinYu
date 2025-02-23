@@ -54,7 +54,7 @@ def split_markdown_by_entry(markdown_file_path, output_dir):
             continue
 
         #  使用更健壮的方式提取词条名
-        entry_name = entry_lines[1].split('词条：')[1].strip()
+        entry_name = entry_lines[1].split('###')[1].strip()
         if not entry_name:
             print(f"警告: 无法从以下内容中提取词条名，已跳过:\n{entry_lines[1]}")
             continue
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-i", 
         "--input_path", 
-        default="./原始词条文件",
+        default="./基本工作目录/模型输出原始词条文件",
         help="输入 Markdown 文件路径，默认为原始词条文件目录下的文件 (回收站的文件会被忽略)"
     )
     parser.add_argument(
@@ -124,8 +124,6 @@ if __name__ == "__main__":
                     if "回收站" in markdown_file_path: 
                         print(f"已跳过处理文件: {markdown_file_path}")
                         continue
-                    
-                    
                     else:
                         print(f"开始处理 Markdown 文件: {markdown_file_path}")
                     split_markdown_by_entry(markdown_file_path, output_directory) # 调用处理函数

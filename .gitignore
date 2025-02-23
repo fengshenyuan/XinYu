@@ -1,0 +1,8 @@
+# vscode configuration
+.vscode
+
+# Mac OSX folder attribute files
+.DS_Store
+
+# Log files
+*.out
